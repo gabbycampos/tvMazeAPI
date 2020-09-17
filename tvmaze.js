@@ -54,7 +54,7 @@ function populateShows(shows) {
              <p class="card-text">${show.summary}</p>
              <img class="card-img-top" src="${show.image}">
            </div>
-           <button type="button" class="btn btn-primary data-toggle="modal" data-target="#exampleModalLong" id="episodesBtn">episodes</button>
+           <button class="btn btn-primary data-target="#exampleModalLong" id="episodesBtn">episodes</button>
          </div>
        </div>
       `);
@@ -112,37 +112,16 @@ function populateEpisodes(episodes) {
 
   for (let episode of episodes) {
     let $item = $(
-      `
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Episode Name: ${episode.name}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+
+      `<h5 class="card-title">Episode Name: ${episode.name}</h5>
         <p class="card-text">Episode Season: ${episode.season}</p>
         <p class="card-text">Episode Number: ${episode.number}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
       `
-      // `<h5 class="card-title">Episode Name: ${episode.name}</h5>
-      //   <p class="card-text">Episode Season: ${episode.season}</p>
-      //   <p class="card-text">Episode Number: ${episode.number}</p>
-      // `
       );
 
      $episodesList.append($item);
   }
   $('#episodes-area').show();
-  $('#exampleModalLong').modal('show')
 }
 
 $("#shows-list").on("click", "#episodesBtn", async function handleEpisodeClick(event) {
